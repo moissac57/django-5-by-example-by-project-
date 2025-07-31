@@ -1,0 +1,30 @@
+<h2>Add a new comment</h2>
+
+{% if form.errors %}
+  <div class="errors">
+    {{ form.errors }}
+  </div>
+{% endif %}
+
+<form action="{% url 'blog:post_comment' post.id %}" method="post">
+  <div class="left">
+    {{ form.name.label_tag }}<br>
+    {{ form.name }}
+    {{ form.name.errors }}
+  </div>
+
+  <div class="left">
+    {{ form.email.label_tag }}<br>
+    {{ form.email }}
+    {{ form.email.errors }}
+  </div>
+
+  <div class="clear">
+    {{ form.body.label_tag }}<br>
+    {{ form.body }}
+    {{ form.body.errors }}
+  </div>
+
+  {% csrf_token %}
+  <p><input type="submit" value="Add comment"></p>
+</form>
